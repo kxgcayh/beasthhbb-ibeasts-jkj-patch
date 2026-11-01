@@ -13,13 +13,31 @@
     </dependencies>
   </moduleDependencies>
   <installSteps order="Explicit">
+    <installStep name="Whose look">
+      <optionalFileGroups order="Explicit">
+        <group name="Which mod gives the 40 shared Khajiit their look" type="SelectExactlyOne">
+          <plugins order="Explicit">
+            <plugin name="BeastHHBB and iBeasts">
+              <description>The 40 Khajiit both sides edit get the BeastHHBB / iBeasts look; Project ja-Kha'jay keeps their factions, AI packages, items and fixes. Requires both: iBeasts - Interesting Npcs replacer overwrites Project ja-Kha'jay - Interesting NPCs Khajiit Addon, and BeastHHBB overwrites Project ja-Kha'jay - Khajiit NPC Diversity Overhaul (MO2: lower in the left pane; Vortex: load after). The installer cannot detect file priority.</description>
+              <conditionFlags><flag name="look">beast</flag></conditionFlags>
+              <typeDescriptor><type name="Recommended"/></typeDescriptor>
+            </plugin>
+            <plugin name="Project ja-Kha'jay">
+              <description>The 40 Khajiit keep the Project ja-Kha'jay look, whatever order LOOT sorts the plugins in; Kharjo also keeps BeastHHBB's perks and level cap. Requires both: Project ja-Kha'jay - Interesting NPCs Khajiit Addon overwrites iBeasts - Interesting Npcs replacer, and Project ja-Kha'jay - Khajiit NPC Diversity Overhaul overwrites BeastHHBB (MO2: lower in the left pane; Vortex: load after). If only one pair is set, those NPCs are headless. The installer cannot detect file priority.</description>
+              <conditionFlags><flag name="look">jkj</flag></conditionFlags>
+              <typeDescriptor><type name="Optional"/></typeDescriptor>
+            </plugin>
+          </plugins>
+        </group>
+      </optionalFileGroups>
+    </installStep>
     <installStep name="Your Project ja-Kha'jay setup">
       <optionalFileGroups order="Explicit">
         <group name="Your Project ja-Kha'jay plugins (the matching one is preselected)" type="SelectExactlyOne">
           <plugins order="Explicit">
           <plugin name="For JKJ - USSEP Patch and JKJ - AI Overhaul Patch, with Ri'saad Restored">
-            <description>Use this if you have JKJ - USSEP Patch and JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
-            <files><folder source="both-ohmes" destination=""/></files>
+            <description>Use this if you have JKJ - USSEP Patch and JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup and the look picked on the previous page. The option matching exactly your enabled plugins is preselected.</description>
+            <conditionFlags><flag name="setup">both-ohmes</flag></conditionFlags>
             <typeDescriptor>
               <dependencyType>
                 <defaultType name="Optional"/>
@@ -37,8 +55,8 @@
             </typeDescriptor>
           </plugin>
           <plugin name="For JKJ - AI Overhaul Patch, with Ri'saad Restored">
-            <description>Use this if you have JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
-            <files><folder source="aio-ohmes" destination=""/></files>
+            <description>Use this if you have JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup and the look picked on the previous page. The option matching exactly your enabled plugins is preselected.</description>
+            <conditionFlags><flag name="setup">aio-ohmes</flag></conditionFlags>
             <typeDescriptor>
               <dependencyType>
                 <defaultType name="Optional"/>
@@ -61,8 +79,8 @@
             </typeDescriptor>
           </plugin>
           <plugin name="For JKJ - USSEP Patch, with Ri'saad Restored">
-            <description>Use this if you have JKJ - USSEP Patch enabled and JKJ- Ohmes Risaad Restored.esp enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
-            <files><folder source="ussep-ohmes" destination=""/></files>
+            <description>Use this if you have JKJ - USSEP Patch enabled and JKJ- Ohmes Risaad Restored.esp enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup and the look picked on the previous page. The option matching exactly your enabled plugins is preselected.</description>
+            <conditionFlags><flag name="setup">ussep-ohmes</flag></conditionFlags>
             <typeDescriptor>
               <dependencyType>
                 <defaultType name="Optional"/>
@@ -85,8 +103,8 @@
             </typeDescriptor>
           </plugin>
           <plugin name="For JKJ - USSEP Patch and JKJ - AI Overhaul Patch, without Ri'saad Restored">
-            <description>Use this if you have JKJ - USSEP Patch and JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp not enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
-            <files><folder source="both-default" destination=""/></files>
+            <description>Use this if you have JKJ - USSEP Patch and JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp not enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup and the look picked on the previous page. The option matching exactly your enabled plugins is preselected.</description>
+            <conditionFlags><flag name="setup">both-default</flag></conditionFlags>
             <typeDescriptor>
               <dependencyType>
                 <defaultType name="Optional"/>
@@ -109,8 +127,8 @@
             </typeDescriptor>
           </plugin>
           <plugin name="For JKJ - AI Overhaul Patch, without Ri'saad Restored">
-            <description>Use this if you have JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp not enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
-            <files><folder source="aio-default" destination=""/></files>
+            <description>Use this if you have JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp not enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup and the look picked on the previous page. The option matching exactly your enabled plugins is preselected.</description>
+            <conditionFlags><flag name="setup">aio-default</flag></conditionFlags>
             <typeDescriptor>
               <dependencyType>
                 <defaultType name="Optional"/>
@@ -133,8 +151,8 @@
             </typeDescriptor>
           </plugin>
           <plugin name="For JKJ - USSEP Patch, without Ri'saad Restored">
-            <description>Use this if you have JKJ - USSEP Patch enabled and JKJ- Ohmes Risaad Restored.esp not enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
-            <files><folder source="ussep-default" destination=""/></files>
+            <description>Use this if you have JKJ - USSEP Patch enabled and JKJ- Ohmes Risaad Restored.esp not enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup and the look picked on the previous page. The option matching exactly your enabled plugins is preselected.</description>
+            <conditionFlags><flag name="setup">ussep-default</flag></conditionFlags>
             <typeDescriptor>
               <dependencyType>
                 <defaultType name="Optional"/>
@@ -162,7 +180,7 @@
           <plugins order="Explicit">
             <plugin name="Hand to Hand - Trainers and Skill Books Addon">
               <description>Installs BeastHHBB iBeasts - JKJ Patch - Hand to Hand.esp: keeps Ma'jhad a Hand to Hand trainer (its trainer class, faction and items), which Project ja-Kha'jay's records would otherwise overwrite. Available only when H2HBooksandTrainers.esp is enabled; selected automatically then.</description>
-              <files><folder source="hand-to-hand" destination=""/></files>
+              <conditionFlags><flag name="hand-to-hand">On</flag></conditionFlags>
               <typeDescriptor>
                 <dependencyType>
                   <defaultType name="NotUsable"/>
@@ -182,4 +200,22 @@
       </optionalFileGroups>
     </installStep>
   </installSteps>
+  <conditionalFileInstalls>
+    <patterns>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="beast"/><flagDependency flag="setup" value="both-ohmes"/></dependencies><files><folder source="beast/both-ohmes" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="beast"/><flagDependency flag="setup" value="aio-ohmes"/></dependencies><files><folder source="beast/aio-ohmes" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="beast"/><flagDependency flag="setup" value="ussep-ohmes"/></dependencies><files><folder source="beast/ussep-ohmes" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="beast"/><flagDependency flag="setup" value="both-default"/></dependencies><files><folder source="beast/both-default" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="beast"/><flagDependency flag="setup" value="aio-default"/></dependencies><files><folder source="beast/aio-default" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="beast"/><flagDependency flag="setup" value="ussep-default"/></dependencies><files><folder source="beast/ussep-default" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="beast"/><flagDependency flag="hand-to-hand" value="On"/></dependencies><files><folder source="beast/hand-to-hand" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="jkj"/><flagDependency flag="setup" value="both-ohmes"/></dependencies><files><folder source="jkj/both-ohmes" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="jkj"/><flagDependency flag="setup" value="aio-ohmes"/></dependencies><files><folder source="jkj/aio-ohmes" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="jkj"/><flagDependency flag="setup" value="ussep-ohmes"/></dependencies><files><folder source="jkj/ussep-ohmes" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="jkj"/><flagDependency flag="setup" value="both-default"/></dependencies><files><folder source="jkj/both-default" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="jkj"/><flagDependency flag="setup" value="aio-default"/></dependencies><files><folder source="jkj/aio-default" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="jkj"/><flagDependency flag="setup" value="ussep-default"/></dependencies><files><folder source="jkj/ussep-default" destination=""/></files></pattern>
+    <pattern><dependencies operator="And"><flagDependency flag="look" value="jkj"/><flagDependency flag="hand-to-hand" value="On"/></dependencies><files><folder source="jkj/hand-to-hand" destination=""/></files></pattern>
+    </patterns>
+  </conditionalFileInstalls>
 </config>

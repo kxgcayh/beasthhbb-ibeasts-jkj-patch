@@ -2,9 +2,10 @@
 """Build the BeastHHBB and iBeasts - Project ja-Kha'jay Patch (see README.md, BUILDING.md, NOTES.md).
 
 For NPCs that Project ja-Kha'jay (JKJ) and a beast mod (iBeasts, BeastHHBB) both edit, each patch record is the JKJ
-record with its appearance fields replaced by the beast mod's. One ESL-flagged plugin per JKJ setup (6 variants, same
-file name, picked by the FOMOD), plus optional add-ons for supported mods. No assets are shipped: the FaceGen comes
-from the installed beast mods, which must win file conflicts over JKJ.
+record with its appearance fields replaced by the beast mod's ("beast" look), or kept ("jkj" look). One ESL-flagged
+plugin per look and JKJ setup (2 x 6 variants, same file name, picked by the FOMOD), plus optional add-ons for supported
+mods. No assets are shipped: the FaceGen comes from the installed mods, and the chosen look's mods must win file
+conflicts.
 Usage: python3 build.py            (serializes inputs/, prints masters and records, writes no plugin)
        python3 build.py --write    (also writes the plugins to dist/ and packages the FOMOD zip)
 Needs: dotnet, python3, the Spriggit.Yaml.Skyrim 0.41.0 DLL (SPRIGGIT_DLL or auto-detected), inputs/ (BUILDING.md).
@@ -72,7 +73,14 @@ BASE_ORDER = ["Project ja-Kha'jay- Khajiit Diversity", "JKJ - USSEP Patch", "JKJ
 # taken from the beast mod; everything else (factions, AI, perks, USSEP/AI Overhaul fixes) stays as in the JKJ record
 APPEARANCE = {"Race", "HeadParts", "HairColor", "HeadTexture", "TextureLighting", "FaceMorph", "FaceParts",
               "TintLayers", "Height", "Weight", "WornArmor", "DefaultOutfit"}
-# extra fields taken from the beast mod for single NPCs
+# Look (FOMOD step 1): the fields taken from the beast mod for every NPC. "jkj" keeps the JKJ look; its records still
+# carry EXTRA and, mastering both sides, fix the plugin order so the JKJ record wins.
+LOOKS = {"beast": APPEARANCE, "jkj": set()}
+DESC = {"beast": "iBeasts (27 Interesting NPCs Khajiit) and BeastHHBB (13 Khajiit) win appearance over Project ja-Kha'jay. "
+                 "Requires iBeasts and BeastHHBB to win loose file conflicts over Project ja-Kha'jay.",
+        "jkj": "Project ja-Kha'jay wins appearance over iBeasts and BeastHHBB for the 40 Khajiit they share. "
+               "Requires Project ja-Kha'jay to win loose file conflicts over iBeasts and BeastHHBB."}
+# extra fields taken from the beast mod for single NPCs, in both looks
 EXTRA = {"01B1D2": {"Perks", "Configuration"}}  # Kharjo: BeastHHBB's 11 perks, CalcMaxLevel 160, DoesntAffectStealthMeter
 # Optional add-ons for supported mods: one small plugin each, mastering the main patch and the supported mod, that
 # copies the supported mod's fields onto NPCs the main patch overrides. Installed by the FOMOD only if that mod is active.
@@ -110,10 +118,10 @@ def overlay(base, src, take):  # base blocks with the `take` fields replaced by 
     return {k: (src[k] if k in take else base[k]) for k in keys if not (k in take and k not in src)}
 
 
-def merge(base, donor):
+def merge(base, donor, take):
     w, d = blocks(base.read_text()), blocks(donor.read_text())
     assert w["FormKey"] == d["FormKey"], f"FormKey mismatch: {base.name} / {donor.name}"
-    return unblock(overlay(w, d, APPEARANCE | EXTRA.get(w["FormKey"][0][9:15], set())))
+    return unblock(overlay(w, d, take | EXTRA.get(w["FormKey"][0][9:15], set())))
 
 
 def pick(plugin, ids):  # records by FormID from a serialized plugin; must find each exactly once
@@ -171,37 +179,41 @@ def build(write):
     dist = HERE / "dist" / TITLE
     if write:
         shutil.rmtree(dist, ignore_errors=True)
-    desc = ("iBeasts (27 Interesting NPCs Khajiit) and BeastHHBB (13 Khajiit) win appearance over Project ja-Kha'jay. "
-            "Requires iBeasts and BeastHHBB to win loose file conflicts over Project ja-Kha'jay.")
-    print(f"== {NAME}.esp (ESL flag, 0 new records)")
-    built = {}
-    for v, extra in VARIANTS.items():
-        recs = {}
-        for d in donors:
-            base = pick(base_for(fk[d], CORE | extra), [fk[d][:6]])[0]
-            recs[base.name] = merge(base, d)
-        assert len(recs) == 40, f"expected 40 records, got {len(recs)}: inputs changed"
-        masters = masters_for(recs, CORE | extra)
-        built[v] = recs
-        print(f"masters [{v}]: " + ", ".join(masters))
-        if write:
-            write_plugin(NAME, recs, masters, desc, Y / "out" / v, dist / v / f"{NAME}.esp", Y / "roundtrip" / v)
-            print(f"OK [{v}]: round-trips to the same {len(recs)} records, {len(masters)} masters")
-    print("records: 40 (27 iBeasts + 13 BeastHHBB): JKJ record of the variant + beast mod appearance fields")
+    for look, take in LOOKS.items():
+        print(f"== {NAME}.esp, look {look} (ESL flag, 0 new records)")
+        built, same = {}, set()
+        for v, extra in VARIANTS.items():
+            recs = {}
+            for d in donors:
+                base = pick(base_for(fk[d], CORE | extra), [fk[d][:6]])[0]
+                recs[base.name] = merge(base, d, take)
+                if recs[base.name] == base.read_text():
+                    same.add(base.name)
+            assert len(recs) == 40, f"expected 40 records, got {len(recs)}: inputs changed"
+            masters = masters_for(recs, CORE | extra)
+            built[v] = recs
+            print(f"masters [{look}/{v}]: " + ", ".join(masters))
+            if write:
+                write_plugin(NAME, recs, masters, DESC[look], Y / "out" / look / v, dist / look / v / f"{NAME}.esp",
+                             Y / "roundtrip" / look / v)
+                print(f"OK [{look}/{v}]: round-trips to the same {len(recs)} records, {len(masters)} masters")
+        print(f"records: 40 (27 iBeasts + 13 BeastHHBB), {len(same)} identical to the JKJ record (kept: they fix the order)")
 
-    for folder, a in ADDONS.items():
-        recs = {}
-        for fid in a["npcs"]:
-            main = {v: [(f, t) for f, t in r.items() if f" - {fid}_" in f][0] for v, r in built.items()}
-            assert len(set(main.values())) == 1, f"{fid}: main patch record differs between variants; add-on needs variants"
-            f, t = main["ussep-default"]
-            recs[f] = unblock(overlay(blocks(t), blocks(pick(a["plugin"], [fid])[0].read_text()), a["fields"]))
-        masters = masters_for(recs, {f"{NAME}.esp", f"{a['plugin']}.esp"})
-        print(f"\n== {a['name']}.esp (optional, folder {folder}): {len(recs)} record(s), masters: " + ", ".join(masters))
-        if write:
-            write_plugin(a["name"], recs, masters, a["desc"], Y / "out" / folder, dist / folder / f"{a['name']}.esp",
-                         Y / "roundtrip" / folder)
-            print(f"OK [{folder}]: round-trips to the same {len(recs)} record(s), {len(masters)} masters")
+        for folder, a in ADDONS.items():
+            recs = {}
+            for fid in a["npcs"]:
+                main = {v: [(f, t) for f, t in r.items() if f" - {fid}_" in f][0] for v, r in built.items()}
+                assert len(set(main.values())) == 1, f"{fid}: main patch record differs between variants; add-on needs variants"
+                f, t = main["ussep-default"]
+                recs[f] = unblock(overlay(blocks(t), blocks(pick(a["plugin"], [fid])[0].read_text()), a["fields"]))
+            masters = masters_for(recs, {f"{NAME}.esp", f"{a['plugin']}.esp"})
+            out = f"{look}/{folder}"
+            print(f"\n== {a['name']}.esp (optional, folder {out}): {len(recs)} record(s), masters: " + ", ".join(masters))
+            if write:
+                write_plugin(a["name"], recs, masters, a["desc"], Y / "out" / out, dist / out / f"{a['name']}.esp",
+                             Y / "roundtrip" / out)
+                print(f"OK [{out}]: round-trips to the same {len(recs)} record(s), {len(masters)} masters")
+        print()
 
 
 def run(cmd):
@@ -210,14 +222,15 @@ def run(cmd):
         sys.exit(f"failed: {' '.join(cmd)}\n{r.stdout}\n{r.stderr}")
 
 
-def package():  # FOMOD zip: fomod/ + one folder per variant and per add-on
+def package():  # FOMOD zip: fomod/ + one folder per look x (variant and add-on)
     from xml.dom import minidom
     import zipfile
     src, built = HERE / "fomod", HERE / "dist" / TITLE
     for x in ("info.xml", "ModuleConfig.xml"):
         minidom.parse(str(src / x))
     sources = set(re.findall(r'source="([^"]+)"', (src / "ModuleConfig.xml").read_text()))
-    assert sources == set(VARIANTS) | set(ADDONS), f"ModuleConfig sources {sorted(sources)} != built folders"
+    want = {f"{look}/{x}" for look in LOOKS for x in [*VARIANTS, *ADDONS]}
+    assert sources == want, f"ModuleConfig sources {sorted(sources)} != built folders"
     out = HERE / "dist" / f"{TITLE}.zip"
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         for x in ("info.xml", "ModuleConfig.xml"):

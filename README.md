@@ -2,7 +2,7 @@
 
 **Version 1.0**
 
-An ESL-flagged (`.esp`) compatibility patch that fixes headless and wrong-faced Khajiit when **Project ja-Kha'jay** is installed together with **BeastHHBB** and **iBeasts - Interesting Npcs replacer**. The beast mods win the look of every NPC both sides edit; Project ja-Kha'jay keeps everything else.
+An ESL-flagged (`.esp`) compatibility patch that fixes headless and wrong-faced Khajiit when **Project ja-Kha'jay** is installed together with **BeastHHBB** and **iBeasts - Interesting Npcs replacer**. By default the beast mods win the look of every NPC both sides edit and Project ja-Kha'jay keeps everything else. The installer also offers the opposite: the Project ja-Kha'jay look, with the patch keeping that record in front whatever order LOOT sorts the plugins in.
 
 Skyrim Special Edition and Anniversary Edition. Plugin only: no meshes, textures or other assets from any mod.
 
@@ -21,7 +21,7 @@ Not required. The installer detects them and offers or selects the matching file
 | Mod | What the installer does |
 |---|---|
 | `JKJ - USSEP Patch.esp` / `JKJ - AI Overhaul Patch.esp` (Project ja-Kha'jay options) | installs the main plugin built for the one you have, or for both |
-| `JKJ- Ohmes Risaad Restored.esp` (Project ja-Kha'jay option) | installs the main plugin built to load after it; Ri'saad still gets the BeastHHBB look |
+| `JKJ- Ohmes Risaad Restored.esp` (Project ja-Kha'jay option) | installs the main plugin built to load after it; Ri'saad gets the BeastHHBB look, or the Ohmes-raht look with the Project ja-Kha'jay look option |
 | [Hand to Hand - Trainers and Skill Books Addon](https://www.nexusmods.com/skyrimspecialedition/mods/59790) (`H2HBooksandTrainers.esp`) | offers the add-on `BeastHHBB iBeasts - JKJ Patch - Hand to Hand.esp`, selected automatically |
 
 **Why the Hand to Hand add-on.** Hand to Hand makes Ma'jhad a Hand to Hand trainer by editing his record (trainer class, faction, items). The Project ja-Kha'jay records, which this patch builds on, also edit Ma'jhad and would overwrite that. The add-on puts the three fields back on top of this patch and loads after both. Without Hand to Hand, the option is greyed out and nothing extra is installed.
@@ -31,64 +31,69 @@ Built and checked against BeastHHBB 3.8, iBeasts 1.2.0.0, Project ja-Kha'jay 4.0
 
 ## The Problem
 
-Each NPC's look comes from two places that are resolved separately: the NPC record (race, head parts, face shape, tints), won by **plugin load order**, and the FaceGen head mesh and tint texture, won by **mod manager priority** for loose files. When two mods edit the same NPC and each ships its own FaceGen, the two can be won by different mods. The record then describes one head and the mesh is another: dark face, neck seam or missing head.
+Each NPC's look comes from two places that are resolved separately: the NPC record (race, head parts, face shape, tints), won by **plugin load order**, and the FaceGen head mesh and tint texture, won by **mod manager priority** for loose files. BeastHHBB, iBeasts and Project ja-Kha'jay all edit the same 40 Khajiit and all ship FaceGen for them, so the record and the FaceGen can be won by different mods. The record then describes one head and the mesh is another: dark face, neck seam or missing head.
 
-1. **27 Interesting NPCs Khajiit:** `JKJ - 3DNPC.esp` wins the record (Cathay-Raht race, JKJ head parts) while iBeasts wins the FaceGen. Neither plugin masters the other, so LOOT does not fix their order either.
-2. **11 caravan Khajiit** (Ri'saad, Ahkari, Ma'dran, Kharjo and the rest): the Project ja-Kha'jay plugins win the record while BeastHHBB wins the FaceGen.
-3. **Mazaka and J'zargo:** same split once BeastHHBB wins the FaceGen (below), unless `BeastHHBB - Ai Overhaul Patch.esp` happens to win their records.
+1. **27 Interesting NPCs Khajiit:** `IBeasts - 3dNpcs.esp` and `JKJ - 3DNPC.esp` both edit them. Neither plugin masters the other, so nothing fixes which record wins.
+2. **11 caravan Khajiit** (Ri'saad, Ahkari, Ma'dran, Kharjo and the rest): `BeastHHBB.esp` and the Project ja-Kha'jay plugins.
+3. **Mazaka and J'zargo:** `BeastHHBB.esp` (and `BeastHHBB - Ai Overhaul Patch.esp`) and the Project ja-Kha'jay plugins.
+
+Which mod wins the files is your choice in the mod manager; the plugin order is LOOT's. Only when both point to the same mod is the head correct.
 
 ## What the Patch Does
 
-### Replaced (beast mods win)
-- **Look of 40 NPCs:** race, head parts, hair color, head texture, skin tone, face shape, face parts, tint layers, height, weight, skin (`WornArmor`) and default outfit come from iBeasts (27) or BeastHHBB (13).
-- **Kharjo:** also takes BeastHHBB's 11 perks, level cap 160 (was 30) and the "doesn't affect stealth meter" flag.
+You choose in the installer which side gives these 40 NPCs their look. The patch then makes the winning record match that side's FaceGen, whatever order LOOT sorts the plugins in, and you set the file priority to the same side (see [Required file priority](#required-file-priority)). Everything that is not the look comes from the Project ja-Kha'jay records in both cases.
 
-### Kept (Project ja-Kha'jay)
-- Everything else on those records: factions, AI packages, inventory, voice, class, skills, and the USSEP and AI Overhaul fixes the Project ja-Kha'jay plugins carry.
+| | **BeastHHBB and iBeasts look** (default) | **Project ja-Kha'jay look** |
+|---|---|---|
+| Look of the 40 NPCs: race, head parts, hair color, head texture, skin tone, face shape, face parts, tint layers, height, weight, skin (`WornArmor`), default outfit | iBeasts (27 Interesting NPCs), BeastHHBB (13 vanilla) | Project ja-Kha'jay, including the Ohmes-raht Ri'saad with `JKJ- Ohmes Risaad Restored.esp` |
+| Factions, AI packages, inventory, voice, class, skills, the USSEP and AI Overhaul fixes | Project ja-Kha'jay | Project ja-Kha'jay |
+| Kharjo: 11 perks, level cap 160 (was 30), "doesn't affect stealth meter" | BeastHHBB | BeastHHBB |
+| Files that must win | iBeasts and BeastHHBB | both Project ja-Kha'jay mods |
+| You lose | the Project ja-Kha'jay look of the 40 NPCs, and the JKJ outfits of Akh'ir, Inari, Qa'Dojo, Serazi, S'vashni and Zaynabi | the BeastHHBB / iBeasts look of the 40 NPCs, and the beast mods' outfits of those 6 |
 
-### Lost
-- **Project ja-Kha'jay's look** for these 40 NPCs, including the Ohmes-raht Ri'saad from `JKJ- Ohmes Risaad Restored.esp`.
-- **JKJ outfits** for 5 of the 27 Interesting NPCs (Akh'ir, Inari, Qa'Dojo, Serazi, S'vashni) and Zaynabi.
-- **Edits of other mods to these NPCs that the Project ja-Kha'jay records do not carry**, for example Tamrielic Distribution's inventory item on the caravan Khajiit. They are already lost without this patch, because the Project ja-Kha'jay plugins load after those mods.
+**Project ja-Kha'jay look, two details.** 39 of its 40 records are identical to the Project ja-Kha'jay record; they make that record win even if a beast mod plugin sorts after the Project ja-Kha'jay plugins. xEdit lists them as identical to master: do not clean them. `BeastHHBB - Ai Overhaul Patch.esp` gives Mazaka and J'zargo the BeastHHBB look; it must load before this patch (LOOT does so in practice, but nothing forces it), otherwise those two lose their heads.
 
-### Not touched
-- 4 NPCs only `JKJ - 3DNPC.esp` edits (Darksteel3, FinalDarksteel5, JeerahCaptive3, Male4Darksteel) keep the JKJ look.
-- Every other Khajiit and Argonian.
+**In both looks:**
+- **Lost:** edits of other mods to these NPCs that the Project ja-Kha'jay records do not carry, for example Tamrielic Distribution's inventory item on the caravan Khajiit. They are already lost without this patch, because the Project ja-Kha'jay plugins load after those mods.
+- **Not touched:** the 4 NPCs only `JKJ - 3DNPC.esp` edits (Darksteel3, FinalDarksteel5, JeerahCaptive3, Male4Darksteel), and every other Khajiit and Argonian.
 
 The full NPC list and field-level detail are in [NOTES.md](NOTES.md).
 
 ## Install
 
 1. Enable the Project ja-Kha'jay plugins you want to use (and Hand to Hand, if you use it). The installer reads which plugins are enabled; a disabled plugin counts as not installed.
-2. Install the archive with your mod manager. The installer shows one page:
+2. Install the archive with your mod manager. The installer shows two pages:
+   - **Whose look:** BeastHHBB and iBeasts (default) or Project ja-Kha'jay. The installer cannot see file priority, so pick the one whose files you let win (below).
    - **Your Project ja-Kha'jay plugins:** six options, the one matching your enabled plugins is preselected. It installs one plugin, `BeastHHBB iBeasts - JKJ Patch.esp`.
    - **Optional support for other mods:** Hand to Hand, selected when `H2HBooksandTrainers.esp` is enabled, greyed out otherwise.
 3. Set the file priority (below), then sort plugins with LOOT. The masters make LOOT place the patch after every plugin it needs.
 
 The installer stops with a missing-requirements message unless `3DNPC.esp`, `JKJ - 3DNPC.esp`, `IBeasts - 3dNpcs.esp`, `BeastHHBB.esp`, `Project ja-Kha'jay- Khajiit Diversity.esp`, USSEP and at least one of the two JKJ patches are enabled.
 
-**Reinstall** after enabling or disabling `JKJ - USSEP Patch.esp`, `JKJ - AI Overhaul Patch.esp`, `JKJ- Ohmes Risaad Restored.esp` or `H2HBooksandTrainers.esp`. Otherwise the game may not start (missing master) or the headless NPCs come back.
+**Reinstall** after enabling or disabling `JKJ - USSEP Patch.esp`, `JKJ - AI Overhaul Patch.esp`, `JKJ- Ohmes Risaad Restored.esp` or `H2HBooksandTrainers.esp`. Otherwise the game may not start (missing master) or the headless NPCs come back. Reinstall also to switch the look, and swap the file priority with it.
 
 ### Required file priority
 
-The patch ships no FaceGen; the faces come from iBeasts and BeastHHBB, so their files must win over Project ja-Kha'jay:
+The patch ships no FaceGen. The mods of the look you picked must win **both** of these file conflicts; one pair set the other way leaves those NPCs headless:
 
-- **iBeasts - Interesting Npcs replacer** must overwrite **Project ja-Kha'jay - Interesting NPCs Khajiit Addon** (54 shared files, the 27 Interesting NPCs).
-- **BeastHHBB** must overwrite **Project ja-Kha'jay - Khajiit NPC Diversity Overhaul** (26 shared files: the 11 caravan Khajiit, Mazaka, J'zargo).
+| Conflict (shared files) | BeastHHBB and iBeasts look: winner | Project ja-Kha'jay look: winner |
+|---|---|---|
+| `iBeasts - Interesting Npcs replacer` vs `Project ja-Kha'jay - Interesting NPCs Khajiit Addon` (54 files, the 27 Interesting NPCs) | iBeasts | Project ja-Kha'jay Addon |
+| `BeastHHBB` vs `Project ja-Kha'jay - Khajiit NPC Diversity Overhaul` (26 files: 11 caravan Khajiit, Mazaka, J'zargo) | BeastHHBB | Project ja-Kha'jay Diversity |
 
-Every file these mods share is FaceGen of the 40 patched NPCs (measured with the target versions above), so this order changes nothing else. It is the opposite of the Project ja-Kha'jay Addon FAQ (load iBeasts first so JKJ wins); that advice is for keeping JKJ's look, which this patch replaces.
+Every file these mods share is FaceGen of the 40 patched NPCs (measured with the target versions above), so either order changes nothing else. The Project ja-Kha'jay look order is the one in the Project ja-Kha'jay Addon FAQ.
 
-**Mod Organizer 2**
-1. Left pane: drag `iBeasts - Interesting Npcs replacer` and `BeastHHBB` **below** both Project ja-Kha'jay mods (lower = higher priority, wins the conflict).
-2. Check: the conflict icon on iBeasts and BeastHHBB shows a plus (they overwrite), on the two Project ja-Kha'jay mods a minus.
+**Mod Organizer 2.** In the left pane, lower means higher priority and wins the conflict.
+1. Drag each winner from the table **below** the mod it must beat. Do it for both rows.
+2. Check: the conflict icon of each winner shows a plus (it overwrites), its opponent's a minus.
 3. Right pane: sort with LOOT. The patch itself can sit anywhere in the left pane.
 
-**Vortex**
-1. On `iBeasts - Interesting Npcs replacer`, click the lightning-bolt conflict icon and set **Load after** `Project ja-Kha'jay - Interesting NPCs Khajiit Addon`; on `BeastHHBB`, set **Load after** `Project ja-Kha'jay - Khajiit NPC Diversity Overhaul`. In this dialog "Load after" means "overwrites its files"; it is not plugin load order.
-2. If you already set the opposite rule (the JKJ FAQ order), remove it first: Vortex reports a rule cycle otherwise.
+**Vortex.**
+1. On each winner from the table, click the lightning-bolt conflict icon and set **Load after** the mod it must beat. Do it for both rows. In this dialog "Load after" means "overwrites its files"; it is not plugin load order.
+2. If an opposite rule is already set (for example from switching looks), remove it first: Vortex reports a rule cycle otherwise.
 3. Deploy, then sort plugins (Plugins page, Sort Now).
 
-**Check in game:** with More Informative Console, click a patched NPC (Ri'saad, J'zargo, Inari): "Base last changed by" must be `BeastHHBB iBeasts - JKJ Patch.esp` (for Ma'jhad with Hand to Hand: the add-on). Another plugin there loads after the patch and edits that NPC: it needs its own patch or must load earlier.
+**Check in game:** with More Informative Console, click a patched NPC (Ri'saad, J'zargo, Inari): "Base last changed by" must be `BeastHHBB iBeasts - JKJ Patch.esp` with either look (for Ma'jhad with Hand to Hand: the add-on). Another plugin there loads after the patch and edits that NPC: it needs its own patch or must load earlier.
 
 **Saves:** the patch adds no new records, only overrides, so removing it leaves nothing orphaned. Mid-playthrough behavior for NPCs you have already met has not been tested.
 
@@ -103,7 +108,9 @@ See [BUILDING.md](BUILDING.md).
 - All 6 main plugin variants and the Hand to Hand add-on round-trip through Spriggit line-for-line; an independent byte parse confirms the ESL flag, the expected masters per variant and unique `NPC_` records (40 per variant, 1 in the add-on).
 - For the 38 NPCs of the earlier patch (`BeastHHBB - JKJ FaceGen Patch` 2.2, built from a load order with both JKJ patches, Ri'saad Restored and Hand to Hand), the matching variant plus the Hand to Hand add-on give byte-identical records.
 - FOMOD validates against the ModConfig 5.0 XSD; an evaluator over every enabled/disabled/missing combination of the four detected plugins confirms the preselection. MO2: correct option preselected (tested).
-- **Not tested in game in this form, not tested in Vortex.**
+- Both looks: an evaluator over both looks and every enabled/disabled combination of the four detected plugins confirms each setup installs exactly its plugin folder (and the matching Hand to Hand add-on). The BeastHHBB-look plugins are byte-identical to the build before the look option was added.
+- **Project ja-Kha'jay look: installed with MO2 and working in game** (2026-11-01; setup with both JKJ patches, Ri'saad Restored and Hand to Hand, both file pairs set to Project ja-Kha'jay).
+- **Not tested in game in this form: the BeastHHBB and iBeasts look, the other 5 setups. Not tested in Vortex.**
 
 ## Credits and Permissions
 

@@ -81,15 +81,17 @@ Output: `dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch.zip`. Intermediat
 What the script does:
 
 1. Checks that all eight inputs exist, compares them with `inputs.sha256` and serializes them to YAML with Spriggit.
-2. Builds the main plugin `BeastHHBB iBeasts - JKJ Patch.esp` once per installer variant (`ussep|aio|both` x
-   `ohmes|default`, one per combination of optional Project ja-Kha'jay plugins):
+2. Builds the main plugin `BeastHHBB iBeasts - JKJ Patch.esp` once per look (`beast|jkj`, `LOOKS`) and installer
+   variant (`ussep|aio|both` x `ohmes|default`, one per combination of optional Project ja-Kha'jay plugins), into
+   `<look>/<variant>/`:
    - picks the 40 NPCs: the 27 both iBeasts and `JKJ - 3DNPC.esp` edit, plus the 11 caravan Khajiit, Mazaka and J'zargo;
    - takes each NPC's record from the last Project ja-Kha'jay plugin of the variant that edits it;
-   - replaces every appearance field (race, head parts, face, tints, height, weight, skin, outfit) with the
-     BeastHHBB or iBeasts value, and Kharjo's perks and level settings with BeastHHBB's;
+   - `beast` look: replaces every appearance field (race, head parts, face, tints, height, weight, skin, outfit)
+     with the BeastHHBB or iBeasts value; `jkj` look: keeps them. Both looks take Kharjo's perks and level settings
+     from BeastHHBB;
    - masters every plugin the records belong to or reference, plus the variant's Project ja-Kha'jay plugins, so
      the patch always loads after them.
-3. Builds the Hand to Hand add-on: the main patch's Ma'jhad with the trainer class, faction and items from
+3. Builds the Hand to Hand add-on per look, into `<look>/hand-to-hand/`: the main patch's Ma'jhad with the trainer class, faction and items from
    `H2HBooksandTrainers.esp`, mastering both.
 4. Deserializes each plugin, re-serializes it and compares every record, the ESL flag and the master list with the
    source, then checks the FOMOD XML is well-formed and zips the package.
@@ -109,15 +111,17 @@ The result is deterministic: the same inputs give byte-identical plugins.
 
 All decisions are at the top of `build.py`:
 
-- Which fields come from BeastHHBB / iBeasts: `APPEARANCE`, plus per-NPC `EXTRA` (Kharjo).
+- Which fields come from BeastHHBB / iBeasts: per look in `LOOKS` (`APPEARANCE` or none), plus per-NPC `EXTRA` (Kharjo) in both.
 - Which Project ja-Kha'jay plugin a record comes from: `BASE_ORDER`; the variants: `CARAVAN_P` x `RISAAD_P`.
 - Master order: `ORDER` (a valid load order of every plugin the patch can master).
 - Optional support for another mod: add an entry to `ADDONS` (plugin, fields, NPCs, name), add its plugin to
   `ORDER` and `INPUT_PLUGINS`, and add an option to the "Optional support for other mods" group in
-  `fomod/ModuleConfig.xml` (`defaultType NotUsable`, one pattern `Recommended` when its plugin is `Active`).
+  `fomod/ModuleConfig.xml` (`defaultType NotUsable`, one pattern `Recommended` when its plugin is `Active`) that sets
+  a flag, plus one `conditionalFileInstalls` pattern per look (`look` flag and that flag) installing `<look>/<folder>`.
 - The installer: `fomod/ModuleConfig.xml`, edited by hand. Validate it against the ModConfig 5.0 XSD after a change
   (the published `gemm` schema has a `type=" xs:string"` typo that libxml2 rejects: strip the space in a local copy).
-  `package()` checks that its `source=` folders equal the built folders.
+  Options only set flags (`look`, `setup`, `hand-to-hand`); `conditionalFileInstalls` maps each flag combination to
+  a folder. `package()` checks that its `source=` folders equal the built folders.
 - After a build, `build/roundtrip/` holds each built plugin re-serialized. Spriggit drops unknown YAML fields
   silently, and item order inside a record can differ, so compare with lines sorted.
 
