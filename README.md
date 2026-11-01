@@ -64,8 +64,9 @@ The full NPC list and field-level detail are in [NOTES.md](NOTES.md).
 1. Enable the Project ja-Kha'jay plugins you want to use (and Hand to Hand, if you use it). The installer reads which plugins are enabled; a disabled plugin counts as not installed.
 2. Install the archive with your mod manager. The installer shows two pages:
    - **Whose look:** BeastHHBB and iBeasts (default) or Project ja-Kha'jay. The installer cannot see file priority, so pick the one whose files you let win (below).
-   - **Your Project ja-Kha'jay plugins:** six options, the one matching your enabled plugins is preselected. It installs one plugin, `BeastHHBB iBeasts - JKJ Patch.esp`.
-   - **Optional support for other mods:** Hand to Hand, selected when `H2HBooksandTrainers.esp` is enabled, greyed out otherwise.
+   - **Your Project ja-Kha'jay setup**, with two sections:
+     - **Your Project ja-Kha'jay plugins:** six options, the one matching your enabled plugins is preselected. It installs one plugin, `BeastHHBB iBeasts - JKJ Patch.esp`.
+     - **Optional support for other mods:** Hand to Hand, selected when `H2HBooksandTrainers.esp` is enabled, greyed out otherwise.
 3. Set the file priority (below), then sort plugins with LOOT. The masters make LOOT place the patch after every plugin it needs.
 
 The installer stops with a missing-requirements message unless `3DNPC.esp`, `JKJ - 3DNPC.esp`, `IBeasts - 3dNpcs.esp`, `BeastHHBB.esp`, `Project ja-Kha'jay- Khajiit Diversity.esp`, USSEP and at least one of the two JKJ patches are enabled.
@@ -126,7 +127,7 @@ Sources: each mod's Nexus description via the Nexus API, and the "Permissions an
 - **Author:** SassiestAssassin (formerly allosnywisegirl). **Pages:** [Diversity Overhaul](https://www.nexusmods.com/skyrimspecialedition/mods/57610); [Interesting NPCs Khajiit Addon](https://www.nexusmods.com/skyrimspecialedition/mods/60447).
 - **Used by this patch:** the non-appearance part of the records in `Project ja-Kha'jay- Khajiit Diversity.esp`, `JKJ - USSEP Patch.esp`, `JKJ - AI Overhaul Patch.esp`, `JKJ- Ohmes Risaad Restored.esp` and `JKJ - 3DNPC.esp`. They are masters. No assets.
 - **Permissions:** modification allowed with credit; asset use: 57610 "must get permission", 60447 "not allowed under any circumstances". Author notes: 57610 "If you want to make a patch with this mod as a master, go for it! Let me know, and I'll add it to the description."; 60447 "Patches that require this mod as a master are allowed."
-- **Consequence:** allowed with credit. The Addon FAQ recommends the opposite file priority; this patch deliberately reverses it for these 40 NPCs.
+- **Consequence:** allowed with credit. With the default BeastHHBB and iBeasts look, this patch reverses the Addon FAQ's file priority for these 40 NPCs; the Project ja-Kha'jay look option follows it.
 
 ### Interesting NPCs SE (3DNPC)
 - **Author:** Kris Takahashi (SE port by KaptainCnucklz and co). **Page:** [Interesting NPCs SE](https://www.nexusmods.com/skyrimspecialedition/mods/29194).
