@@ -109,8 +109,8 @@ See [BUILDING.md](BUILDING.md).
 - For the 38 NPCs of the earlier patch (`BeastHHBB - JKJ FaceGen Patch` 2.2, built from a load order with both JKJ patches, Ri'saad Restored and Hand to Hand), the matching variant plus the Hand to Hand add-on give byte-identical records.
 - FOMOD validates against the ModConfig 5.0 XSD; an evaluator over every enabled/disabled/missing combination of the four detected plugins confirms the preselection. MO2: correct option preselected (tested).
 - Both looks: an evaluator over both looks and every enabled/disabled combination of the four detected plugins confirms each setup installs exactly its plugin folder (and the matching Hand to Hand add-on). The BeastHHBB-look plugins are byte-identical to the build before the look option was added.
-- **Project ja-Kha'jay look: installed with MO2 and working in game** (2026-11-01; setup with both JKJ patches, Ri'saad Restored and Hand to Hand, both file pairs set to Project ja-Kha'jay).
-- **Not tested in game in this form: the BeastHHBB and iBeasts look, the other 5 setups. Not tested in Vortex.**
+- **Both looks installed with MO2 and working in game** (2026-11-01; setup with both JKJ patches, Ri'saad Restored and Hand to Hand, both file pairs set to the chosen look's mods).
+- **Not tested in game: the other 5 setups. Not tested in Vortex.**
 
 ## Credits and Permissions
 
