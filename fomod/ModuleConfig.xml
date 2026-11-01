@@ -1,0 +1,185 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+  <moduleName>BeastHHBB and iBeasts - Project ja-Kha'jay Patch</moduleName>
+  <moduleDependencies operator="And">
+    <fileDependency file="3DNPC.esp" state="Active"/>
+    <fileDependency file="JKJ - 3DNPC.esp" state="Active"/>
+    <fileDependency file="IBeasts - 3dNpcs.esp" state="Active"/>
+    <fileDependency file="BeastHHBB.esp" state="Active"/>
+    <fileDependency file="Project ja-Kha'jay- Khajiit Diversity.esp" state="Active"/>
+    <fileDependency file="Unofficial Skyrim Special Edition Patch.esp" state="Active"/>
+    <dependencies operator="Or">
+      <fileDependency file="JKJ - USSEP Patch.esp" state="Active"/>
+      <fileDependency file="JKJ - AI Overhaul Patch.esp" state="Active"/>
+    </dependencies>
+  </moduleDependencies>
+  <installSteps order="Explicit">
+    <installStep name="Your Project ja-Kha'jay setup">
+      <optionalFileGroups order="Explicit">
+        <group name="Your Project ja-Kha'jay plugins (the matching one is preselected)" type="SelectExactlyOne">
+          <plugins order="Explicit">
+          <plugin name="For JKJ - USSEP Patch and JKJ - AI Overhaul Patch, with Ri'saad Restored">
+            <description>Use this if you have JKJ - USSEP Patch and JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
+            <files><folder source="both-ohmes" destination=""/></files>
+            <typeDescriptor>
+              <dependencyType>
+                <defaultType name="Optional"/>
+                <patterns>
+                  <pattern>
+                    <dependencies operator="And">
+                    <fileDependency file="JKJ - USSEP Patch.esp" state="Active"/>
+                    <fileDependency file="JKJ - AI Overhaul Patch.esp" state="Active"/>
+                    <fileDependency file="JKJ- Ohmes Risaad Restored.esp" state="Active"/>
+                    </dependencies>
+                    <type name="Recommended"/>
+                  </pattern>
+                </patterns>
+              </dependencyType>
+            </typeDescriptor>
+          </plugin>
+          <plugin name="For JKJ - AI Overhaul Patch, with Ri'saad Restored">
+            <description>Use this if you have JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
+            <files><folder source="aio-ohmes" destination=""/></files>
+            <typeDescriptor>
+              <dependencyType>
+                <defaultType name="Optional"/>
+                <patterns>
+                  <pattern>
+                    <dependencies operator="Or">
+                      <fileDependency file="JKJ - USSEP Patch.esp" state="Active"/>
+                    </dependencies>
+                    <type name="Optional"/>
+                  </pattern>
+                  <pattern>
+                    <dependencies operator="And">
+                    <fileDependency file="JKJ - AI Overhaul Patch.esp" state="Active"/>
+                    <fileDependency file="JKJ- Ohmes Risaad Restored.esp" state="Active"/>
+                    </dependencies>
+                    <type name="Recommended"/>
+                  </pattern>
+                </patterns>
+              </dependencyType>
+            </typeDescriptor>
+          </plugin>
+          <plugin name="For JKJ - USSEP Patch, with Ri'saad Restored">
+            <description>Use this if you have JKJ - USSEP Patch enabled and JKJ- Ohmes Risaad Restored.esp enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
+            <files><folder source="ussep-ohmes" destination=""/></files>
+            <typeDescriptor>
+              <dependencyType>
+                <defaultType name="Optional"/>
+                <patterns>
+                  <pattern>
+                    <dependencies operator="Or">
+                      <fileDependency file="JKJ - AI Overhaul Patch.esp" state="Active"/>
+                    </dependencies>
+                    <type name="Optional"/>
+                  </pattern>
+                  <pattern>
+                    <dependencies operator="And">
+                    <fileDependency file="JKJ - USSEP Patch.esp" state="Active"/>
+                    <fileDependency file="JKJ- Ohmes Risaad Restored.esp" state="Active"/>
+                    </dependencies>
+                    <type name="Recommended"/>
+                  </pattern>
+                </patterns>
+              </dependencyType>
+            </typeDescriptor>
+          </plugin>
+          <plugin name="For JKJ - USSEP Patch and JKJ - AI Overhaul Patch, without Ri'saad Restored">
+            <description>Use this if you have JKJ - USSEP Patch and JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp not enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
+            <files><folder source="both-default" destination=""/></files>
+            <typeDescriptor>
+              <dependencyType>
+                <defaultType name="Optional"/>
+                <patterns>
+                  <pattern>
+                    <dependencies operator="Or">
+                      <fileDependency file="JKJ- Ohmes Risaad Restored.esp" state="Active"/>
+                    </dependencies>
+                    <type name="Optional"/>
+                  </pattern>
+                  <pattern>
+                    <dependencies operator="And">
+                    <fileDependency file="JKJ - USSEP Patch.esp" state="Active"/>
+                    <fileDependency file="JKJ - AI Overhaul Patch.esp" state="Active"/>
+                    </dependencies>
+                    <type name="Recommended"/>
+                  </pattern>
+                </patterns>
+              </dependencyType>
+            </typeDescriptor>
+          </plugin>
+          <plugin name="For JKJ - AI Overhaul Patch, without Ri'saad Restored">
+            <description>Use this if you have JKJ - AI Overhaul Patch enabled and JKJ- Ohmes Risaad Restored.esp not enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
+            <files><folder source="aio-default" destination=""/></files>
+            <typeDescriptor>
+              <dependencyType>
+                <defaultType name="Optional"/>
+                <patterns>
+                  <pattern>
+                    <dependencies operator="Or">
+                      <fileDependency file="JKJ - USSEP Patch.esp" state="Active"/>
+                      <fileDependency file="JKJ- Ohmes Risaad Restored.esp" state="Active"/>
+                    </dependencies>
+                    <type name="Optional"/>
+                  </pattern>
+                  <pattern>
+                    <dependencies operator="And">
+                    <fileDependency file="JKJ - AI Overhaul Patch.esp" state="Active"/>
+                    </dependencies>
+                    <type name="Recommended"/>
+                  </pattern>
+                </patterns>
+              </dependencyType>
+            </typeDescriptor>
+          </plugin>
+          <plugin name="For JKJ - USSEP Patch, without Ri'saad Restored">
+            <description>Use this if you have JKJ - USSEP Patch enabled and JKJ- Ohmes Risaad Restored.esp not enabled. Installs one plugin, BeastHHBB iBeasts - JKJ Patch.esp, built for that setup. The option matching exactly your enabled plugins is preselected.</description>
+            <files><folder source="ussep-default" destination=""/></files>
+            <typeDescriptor>
+              <dependencyType>
+                <defaultType name="Optional"/>
+                <patterns>
+                  <pattern>
+                    <dependencies operator="Or">
+                      <fileDependency file="JKJ - AI Overhaul Patch.esp" state="Active"/>
+                      <fileDependency file="JKJ- Ohmes Risaad Restored.esp" state="Active"/>
+                    </dependencies>
+                    <type name="Optional"/>
+                  </pattern>
+                  <pattern>
+                    <dependencies operator="And">
+                    <fileDependency file="JKJ - USSEP Patch.esp" state="Active"/>
+                    </dependencies>
+                    <type name="Recommended"/>
+                  </pattern>
+                </patterns>
+              </dependencyType>
+            </typeDescriptor>
+          </plugin>
+          </plugins>
+        </group>
+        <group name="Optional support for other mods" type="SelectAny">
+          <plugins order="Explicit">
+            <plugin name="Hand to Hand - Trainers and Skill Books Addon">
+              <description>Installs BeastHHBB iBeasts - JKJ Patch - Hand to Hand.esp: keeps Ma'jhad a Hand to Hand trainer (its trainer class, faction and items), which Project ja-Kha'jay's records would otherwise overwrite. Available only when H2HBooksandTrainers.esp is enabled; selected automatically then.</description>
+              <files><folder source="hand-to-hand" destination=""/></files>
+              <typeDescriptor>
+                <dependencyType>
+                  <defaultType name="NotUsable"/>
+                  <patterns>
+                    <pattern>
+                      <dependencies operator="And">
+                        <fileDependency file="H2HBooksandTrainers.esp" state="Active"/>
+                      </dependencies>
+                      <type name="Recommended"/>
+                    </pattern>
+                  </patterns>
+                </dependencyType>
+              </typeDescriptor>
+            </plugin>
+          </plugins>
+        </group>
+      </optionalFileGroups>
+    </installStep>
+  </installSteps>
+</config>
