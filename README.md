@@ -110,7 +110,7 @@ See [BUILDING.md](BUILDING.md).
 - FOMOD validates against the ModConfig 5.0 XSD; an evaluator over every enabled/disabled/missing combination of the four detected plugins confirms the preselection. MO2: correct option preselected (tested).
 - Both looks: an evaluator over both looks and every enabled/disabled combination of the four detected plugins confirms each setup installs exactly its plugin folder (and the matching Hand to Hand add-on). The BeastHHBB-look plugins are byte-identical to the build before the look option was added.
 - **Both looks installed with MO2 and working in game** (2026-11-01; setup with both JKJ patches, Ri'saad Restored and Hand to Hand, both file pairs set to the chosen look's mods).
-- **Not tested in game: the other 5 setups. Not tested in Vortex.**
+- **Not tested in game: the setups with only one of the two JKJ patches, or without Ri'saad Restored. Not tested in Vortex.**
 
 ## Credits and Permissions
 
