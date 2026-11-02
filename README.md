@@ -1,6 +1,6 @@
 # BeastHHBB and iBeasts - Project ja-Kha'jay Patch
 
-**Version 1.0**
+**Version 1.1**
 
 An ESL-flagged (`.esp`) compatibility patch that fixes headless and wrong-faced Khajiit when **Project ja-Kha'jay** is installed together with **BeastHHBB** and **iBeasts - Interesting Npcs replacer**. By default the beast mods win the look of every NPC both sides edit and Project ja-Kha'jay keeps everything else. The installer also offers the opposite: the Project ja-Kha'jay look, with the patch keeping that record in front whatever order LOOT sorts the plugins in.
 

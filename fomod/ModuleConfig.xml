@@ -1,17 +1,5 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
   <moduleName>BeastHHBB and iBeasts - Project ja-Kha'jay Patch</moduleName>
-  <moduleDependencies operator="And">
-    <fileDependency file="3DNPC.esp" state="Active"/>
-    <fileDependency file="JKJ - 3DNPC.esp" state="Active"/>
-    <fileDependency file="IBeasts - 3dNpcs.esp" state="Active"/>
-    <fileDependency file="BeastHHBB.esp" state="Active"/>
-    <fileDependency file="Project ja-Kha'jay- Khajiit Diversity.esp" state="Active"/>
-    <fileDependency file="Unofficial Skyrim Special Edition Patch.esp" state="Active"/>
-    <dependencies operator="Or">
-      <fileDependency file="JKJ - USSEP Patch.esp" state="Active"/>
-      <fileDependency file="JKJ - AI Overhaul Patch.esp" state="Active"/>
-    </dependencies>
-  </moduleDependencies>
   <installSteps order="Explicit">
     <installStep name="Whose look">
       <optionalFileGroups order="Explicit">
