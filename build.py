@@ -235,6 +235,8 @@ def package():  # FOMOD zip: fomod/ + one folder per look x (variant and add-on)
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         for x in ("info.xml", "ModuleConfig.xml"):
             z.write(src / x, f"fomod/{x}")
+        for x in ("LICENSE", "THIRD-PARTY-NOTICES.txt"):
+            z.write(HERE / x, x)
         for f in sorted(p for p in built.rglob("*") if p.is_file() and p.name != ".DS_Store"):
             z.write(f, f.relative_to(built).as_posix())
         n = len(z.infolist())

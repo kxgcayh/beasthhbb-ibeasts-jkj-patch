@@ -1,0 +1,31 @@
+BeastHHBB and iBeasts - Project ja-Kha'jay Patch - Third-party notices
+
+BeastHHBB and iBeasts - Project ja-Kha'jay Patch is licensed MIT (see LICENSE), which covers its scripts and documents only.
+The plugins and any other files in this package are derived from the mods below and stay under their authors' permissions.
+
+Sources: each mod's Nexus description via the Nexus API, and the "Permissions and credits" section of every page below, read on 2026-11-01.
+
+BeastHHBB, including iBeasts - Interesting Npcs replacer
+- Author: Mharlek1. Page: BeastHHBB (https://www.nexusmods.com/skyrimspecialedition/mods/38480). iBeasts is an optional file on this page; its standalone page (50355) is removed.
+- Used by this patch: appearance fields from BeastHHBB.esp (13 NPCs) and IBeasts - 3dNpcs.esp (27 NPCs). Both are masters. No assets.
+- Permissions: modification allowed with credit; upload elsewhere not allowed; some assets belong to other authors. Author notes: "You are free to upload patches using this esp and modifying it for the patches, but not the assets, thus still requiring this mod." Credit and a link required.
+- Consequence: allowed with credit and a link, as long as no BeastHHBB / iBeasts assets (FaceGen included) are shipped. That is why the patch is plugin only and relies on the file priority above.
+
+Project ja-Kha'jay - Khajiit NPC Diversity Overhaul and Interesting NPCs Khajiit Addon
+- Author: SassiestAssassin (formerly allosnywisegirl). Pages: Diversity Overhaul (https://www.nexusmods.com/skyrimspecialedition/mods/57610); Interesting NPCs Khajiit Addon (https://www.nexusmods.com/skyrimspecialedition/mods/60447).
+- Used by this patch: the non-appearance part of the records in Project ja-Kha'jay- Khajiit Diversity.esp, JKJ - USSEP Patch.esp, JKJ - AI Overhaul Patch.esp, JKJ- Ohmes Risaad Restored.esp and JKJ - 3DNPC.esp. They are masters. No assets.
+- Permissions: modification allowed with credit; asset use: 57610 "must get permission", 60447 "not allowed under any circumstances". Author notes: 57610 "If you want to make a patch with this mod as a master, go for it! Let me know, and I'll add it to the description."; 60447 "Patches that require this mod as a master are allowed."
+- Consequence: allowed with credit. With the default BeastHHBB and iBeasts look, this patch reverses the Addon FAQ's file priority for these 40 NPCs; the Project ja-Kha'jay look option follows it.
+
+Interesting NPCs SE (3DNPC)
+- Author: Kris Takahashi (SE port by KaptainCnucklz and co). Page: Interesting NPCs SE (https://www.nexusmods.com/skyrimspecialedition/mods/29194).
+- Used by this patch: 3DNPC.esp as a master. No assets. Permissions: upload, modification and asset use allowed with credit.
+
+Unofficial Skyrim Special Edition Patch (USSEP)
+- Author: Unofficial Patch Project Team. Page: USSEP (https://www.nexusmods.com/skyrimspecialedition/mods/266).
+- Used by this patch: master; its fixes on these records are carried through unaltered (only appearance fields change). Author's instructions: "You are permitted to use the unofficial patches as master files in your own work for the purpose of ensuring that fixes are not lost." "Altering fixes is specifically prohibited."
+
+Hand to Hand - An Adamant Addon (Trainers and Skill Books Addon)
+- Authors: Simon Magus, Colinswrath and Jelidity. Page: Hand to Hand (https://www.nexusmods.com/skyrimspecialedition/mods/59790).
+- Used by the optional add-on: Ma'jhad's trainer class, faction and items from H2HBooksandTrainers.esp, which is a master of the add-on. No assets.
+- Permissions: upload, modification and asset use allowed with credit. Author notes: credit all of the authors who contributed, not only Simon.
