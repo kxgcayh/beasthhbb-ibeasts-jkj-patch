@@ -1,6 +1,6 @@
 # Building from source
 
-Back to [README.md](README.md). The technical notes are in [NOTES.md](NOTES.md).
+Back to [README.md](README.md).
 
 This repository contains no plugin data from other mods. It holds only the build script, the FOMOD and the
 decisions in `build.py`. You supply the original plugins; Spriggit extracts them on your machine and the build
@@ -133,7 +133,6 @@ inputs.sha256         Hashes of the input plugins this was written against
 fomod/                FOMOD info.xml and ModuleConfig.xml shipped in the zip
 README.md             What the patch does, install, credits
 BUILDING.md           How to build from source
-NOTES.md              Technical notes and the full record list
 LICENSE               MIT, for the code and documentation (README, License)
 inputs/               Your copies of the original plugins (not tracked)
 build/, dist/         Generated (not tracked)

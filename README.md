@@ -57,7 +57,6 @@ You choose in the installer which side gives these 40 NPCs their look. The patch
 - **Lost:** edits of other mods to these NPCs that the Project ja-Kha'jay records do not carry, for example Tamrielic Distribution's inventory item on the caravan Khajiit. They are already lost without this patch, because the Project ja-Kha'jay plugins load after those mods.
 - **Not touched:** the 4 NPCs only `JKJ - 3DNPC.esp` edits (Darksteel3, FinalDarksteel5, JeerahCaptive3, Male4Darksteel), and every other Khajiit and Argonian.
 
-The full NPC list and field-level detail are in [NOTES.md](NOTES.md).
 
 ## Install
 
