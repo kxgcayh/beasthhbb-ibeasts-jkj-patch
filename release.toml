@@ -1,0 +1,32 @@
+name = "BeastHHBB-iBeasts-JKJ-Patch"
+display_name = "BeastHHBB and iBeasts - Project ja-Kha'jay Patch"
+version = "1.1"
+description = "Fixes headless or wrong-faced Khajiit when Project ja-Kha'jay is installed with iBeasts - Interesting Npcs replacer and BeastHHBB. ESL-flagged plugin only, no assets."
+
+# archive path = source path (relative to this folder); dist/ is written by: python3 build.py --write
+# The FOMOD is laid out flat (fomod/ plus one folder per option) so MO2 runs the installer on the release zip itself.
+[files]
+"fomod/info.xml" = "fomod/info.xml"
+"fomod/ModuleConfig.xml" = "fomod/ModuleConfig.xml"
+"beast/aio-default/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/beast/aio-default/BeastHHBB iBeasts - JKJ Patch.esp"
+"beast/aio-ohmes/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/beast/aio-ohmes/BeastHHBB iBeasts - JKJ Patch.esp"
+"beast/both-default/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/beast/both-default/BeastHHBB iBeasts - JKJ Patch.esp"
+"beast/both-ohmes/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/beast/both-ohmes/BeastHHBB iBeasts - JKJ Patch.esp"
+"beast/hand-to-hand/BeastHHBB iBeasts - JKJ Patch - Hand to Hand.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/beast/hand-to-hand/BeastHHBB iBeasts - JKJ Patch - Hand to Hand.esp"
+"beast/ussep-default/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/beast/ussep-default/BeastHHBB iBeasts - JKJ Patch.esp"
+"beast/ussep-ohmes/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/beast/ussep-ohmes/BeastHHBB iBeasts - JKJ Patch.esp"
+"jkj/aio-default/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/jkj/aio-default/BeastHHBB iBeasts - JKJ Patch.esp"
+"jkj/aio-ohmes/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/jkj/aio-ohmes/BeastHHBB iBeasts - JKJ Patch.esp"
+"jkj/both-default/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/jkj/both-default/BeastHHBB iBeasts - JKJ Patch.esp"
+"jkj/both-ohmes/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/jkj/both-ohmes/BeastHHBB iBeasts - JKJ Patch.esp"
+"jkj/hand-to-hand/BeastHHBB iBeasts - JKJ Patch - Hand to Hand.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/jkj/hand-to-hand/BeastHHBB iBeasts - JKJ Patch - Hand to Hand.esp"
+"jkj/ussep-default/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/jkj/ussep-default/BeastHHBB iBeasts - JKJ Patch.esp"
+"jkj/ussep-ohmes/BeastHHBB iBeasts - JKJ Patch.esp" = "dist/BeastHHBB and iBeasts - Project ja-Kha'jay Patch/jkj/ussep-ohmes/BeastHHBB iBeasts - JKJ Patch.esp"
+"LICENSE" = "LICENSE"
+"THIRD-PARTY-NOTICES.txt" = "THIRD-PARTY-NOTICES.txt"
+
+[nexus]
+mod_category = 84  # Nexus mod category: Patches; written as category= in the github .meta
+
+[github]
+repo = "kxgcayh/beasthhbb-ibeasts-jkj-patch"
