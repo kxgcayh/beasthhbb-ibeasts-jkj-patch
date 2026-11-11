@@ -115,7 +115,7 @@ See [BUILDING.md](BUILDING.md).
 
 ## Credits and Permissions
 
-Sources: each mod's Nexus description via the Nexus API, and the "Permissions and credits" section of every page below, read on 2026-11-01.
+Sources: each mod's Nexus description via the Nexus API, and the "Permissions and credits" section of every page below, read on 2026-11-01 and re-checked on 2026-11-11 with no change.
 
 ### BeastHHBB, including iBeasts - Interesting Npcs replacer
 - **Author:** Mharlek1. **Page:** [BeastHHBB](https://www.nexusmods.com/skyrimspecialedition/mods/38480). iBeasts is an optional file on this page; its standalone page (50355) is removed.
@@ -141,6 +141,17 @@ Sources: each mod's Nexus description via the Nexus API, and the "Permissions an
 - **Authors:** Simon Magus, Colinswrath and Jelidity. **Page:** [Hand to Hand](https://www.nexusmods.com/skyrimspecialedition/mods/59790).
 - **Used by the optional add-on:** Ma'jhad's trainer class, faction and items from `H2HBooksandTrainers.esp`, which is a master of the add-on. No assets.
 - **Permissions:** upload, modification and asset use allowed with credit. Author notes: credit all of the authors who contributed, not only Simon.
+
+## More mods
+
+Other Skyrim mods by kxgcayh:
+
+- [waccf-simonrim-skypatcher-patch](https://github.com/kxgcayh/waccf-simonrim-skypatcher-patch): Restores Simonrim enchantments, charges and names, and Gourmet effects, over WACCF's SkyPatcher configs.
+- [odin-mysticism-adamant-patch](https://github.com/kxgcayh/odin-mysticism-adamant-patch): Lets Odin - Skyrim Magic Overhaul run with Mysticism and Adamant.
+- [tposc-compat-patch](https://github.com/kxgcayh/tposc-compat-patch): The People Of Skyrim Complete patch: forwards USSEP fixes and keeps its landscape and navmesh over Cutting Room Floor.
+- [lawless-tamrielic-patch-update](https://github.com/kxgcayh/lawless-tamrielic-patch-update): Updates the Lawless Bandit War plugins for Tamrielic Distribution 2.0 and later.
+- [UntarnishedUI-QuickLootIE-Patch](https://github.com/kxgcayh/UntarnishedUI-QuickLootIE-Patch): Untarnished UI skins for QuickLoot IE 4.x.
+- [WhereWasI](https://github.com/kxgcayh/WhereWasI): SKSE plugin: a recap on save load after a break.
 
 ## License
 
